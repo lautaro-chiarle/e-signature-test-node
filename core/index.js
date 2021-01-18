@@ -21,12 +21,19 @@ function how_2_win(plaintiff, defendant) {
     throw new Error("Invalid  Signatures: " + plaintiff + " - " + defendant);
   }
 
+  let diff =0;
   if (hasMissingSignature(plaintiff)) {
     plaintiff = plaintiff.replace("#", "");
-
     [plaintiff_value, defendant_value] = validateAndCalc(plaintiff, defendant);
-    return lookForMinSignature(defendant_value - plaintiff_value);
+    diff = defendant_value - plaintiff_value;
+  }else if (hasMissingSignature(defendant)) {
+    defendant = defendant.replace("#", "");
+    [plaintiff_value, defendant_value] = validateAndCalc(plaintiff, defendant);
+    diff = plaintiff_value - defendant_value;
   }
+
+  
+  return lookForMinSignature(diff);
 }
 
 exports.who_wins = who_wins;
