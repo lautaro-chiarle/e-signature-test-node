@@ -56,13 +56,16 @@ var argv = require('yargs/yargs')(process.argv.slice(2))
 
 var {command_whowins, command_how2win} =  require('./command-line');
 var startServer = require('./server')
+var yargs = require('yargs');
+
 
 if (argv._=="whowins"){
     command_whowins(argv.p, argv.d);
-}else if (argv._=="whowins"){
-    command_whowins(argv.p, argv.d);
+}else if (argv._=="how2win"){
+    command_how2win(argv.p, argv.d);
 } else if (argv._=="serve"){
     startServer(argv.p);
 } else{
+    console.log("Command not understood!")
     yargs.showHelp();
 }

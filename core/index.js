@@ -17,7 +17,8 @@ function who_wins(plaintiff, defendant) {
 }
 
 function how_2_win(plaintiff, defendant) {
-  if (((plaintiff + defendant).match(/#/g) || []).length != 1) {
+  let missingCount =   ((plaintiff + defendant).match(/#/g) || []).length;
+  if ( missingCount != 1) {
     throw new Error("Invalid  Signatures: " + plaintiff + " - " + defendant);
   }
 
