@@ -4,10 +4,7 @@ function routes(app) {
   var {service_whowins} = require('../service');
 
   /**
-   * @group foo - Operations about user
-   */
-
-  /**
+   * @group Operations - Operations about trials
    * @route GET /who-wins/plaintiff/{plaintiff}/defendant/{defendant}
    * @param {string} plaintiff.path.required - Plaintiff's signatures - eg: KN
    * @param {string} defendant.path.required - Defendant's signatures - eg: VVN

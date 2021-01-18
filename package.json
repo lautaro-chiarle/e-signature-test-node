@@ -4,7 +4,7 @@
   "description": "Test for Backend Developer role.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/lautaro-chiarle/e-signature-test-node#readme",
   "dependencies": {
+    "chai": "^4.2.0",
     "express": "^4.17.1",
+    "mocha": "^8.2.1",
     "yargs": "^16.2.0"
   },
   "devDependencies": {

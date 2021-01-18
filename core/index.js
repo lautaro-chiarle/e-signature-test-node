@@ -1,52 +1,35 @@
+var {
+  calcSignatureValue,
+  cleanKingSignature,
+  validateSignatures,
+  validateSignaturesWithMissing,
+} = require("./utils");
 
-const registry = {
-    'K': 5,
-    'N': 2,
-    'V': 1
-};
+function who_wins(plaintiff, defendant) {
+  let p = plaintiff.toUpperCase();
+  let d = defendant.toUpperCase();
+  validateSignatures(p, d);
+  p = cleanKingSignature(p);
+  d = cleanKingSignature(d);
 
-function isValidSignature(sign){
-    let charSequence = Object.keys(registry).join("");
-    let validation = "^["+charSequence+"]+$";
-    return sign.match(validation);
+  plaintiff_value = calcSignatureValue(p);
+  defendant_value = calcSignatureValue(d);
 
-}
-function cleanKingSignature(signature){
-    if (signature.includes('K')){
-        return signature.replace('V','');
-    }
-    return signature;
-
-}
-function calcSignatureValue(signature){
-
-    let value = 0;
-    let arr = signature.split('');
-    arr.forEach(sign => value+=registry[sign])
-    return value;
+  if (plaintiff_value > defendant_value) {
+    return "Plaintiff";
+  } else if (defendant_value > plaintiff_value) {
+    return "Defendant";
+  } else {
+    return "Tie";
+  }
 }
 
-function who_wins(plaintiff,defendant){
-    let p = plaintiff.toUpperCase();
-    let d = defendant.toUpperCase();
-    if (isValidSignature(p) && isValidSignature(d)){
-        p = cleanKingSignature(p);
-        d = cleanKingSignature(d);
-    
-        plaintiff_value = calcSignatureValue(p);
-        defendant_value = calcSignatureValue(d);
-    
-        if (plaintiff_value>defendant_value){
-            return "Plaintiff";
-        }else if (defendant_value>plaintiff_value){
-            return "Defendant";
-        }else{
-            return "Tie";
-        }
-    }else{
-        throw new Error('Invalid Signatures');
-    }
-
+function how_2_win(plaintiff, defendant) {
+  if (plaintiff.includes("##")) {
+    throw new Error("Invalid Plaintiff Signatures:  " + plaintiff);
+  }
+  return "N";
 }
 
 exports.who_wins = who_wins;
+exports.how_2_win = how_2_win;
