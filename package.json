@@ -1,0 +1,31 @@
+{
+  "name": "e-sign-test",
+  "version": "0.0.1",
+  "description": "Test for Backend Developer role.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lautaro-chiarle/e-signature-test-node.git"
+  },
+  "keywords": [
+    "Test",
+    "Signature",
+    "Trial"
+  ],
+  "author": "Lautaro Chiarle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lautaro-chiarle/e-signature-test-node/issues"
+  },
+  "homepage": "https://github.com/lautaro-chiarle/e-signature-test-node#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "express-swagger-generator": "^1.1.17"
+  }
+}
