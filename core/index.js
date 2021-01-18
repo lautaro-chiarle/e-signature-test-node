@@ -1,19 +1,11 @@
 var {
-  calcSignatureValue,
-  cleanKingSignature,
-  validateSignatures,
-  validateSignaturesWithMissing,
+  hasMissingSignature,
+  validateAndCalc,
+  lookForMinSignature,
 } = require("./utils");
 
 function who_wins(plaintiff, defendant) {
-  let p = plaintiff.toUpperCase();
-  let d = defendant.toUpperCase();
-  validateSignatures(p, d);
-  p = cleanKingSignature(p);
-  d = cleanKingSignature(d);
-
-  plaintiff_value = calcSignatureValue(p);
-  defendant_value = calcSignatureValue(d);
+  [plaintiff_value, defendant_value] = validateAndCalc(plaintiff, defendant);
 
   if (plaintiff_value > defendant_value) {
     return "Plaintiff";
@@ -25,10 +17,16 @@ function who_wins(plaintiff, defendant) {
 }
 
 function how_2_win(plaintiff, defendant) {
-  if (plaintiff.includes("##")) {
-    throw new Error("Invalid Plaintiff Signatures:  " + plaintiff);
+  if (((plaintiff + defendant).match(/#/g) || []).length != 1) {
+    throw new Error("Invalid  Signatures: " + plaintiff + " - " + defendant);
   }
-  return "N";
+
+  if (hasMissingSignature(plaintiff)) {
+    plaintiff = plaintiff.replace("#", "");
+
+    [plaintiff_value, defendant_value] = validateAndCalc(plaintiff, defendant);
+    return lookForMinSignature(defendant_value - plaintiff_value);
+  }
 }
 
 exports.who_wins = who_wins;

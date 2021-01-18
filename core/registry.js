@@ -1,7 +1,7 @@
 const registry = {
-    'K': 5,
+    'V': 1,
     'N': 2,
-    'V': 1
+    'K': 5
 };
 
 exports.registry = registry;

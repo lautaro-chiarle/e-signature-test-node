@@ -11,7 +11,7 @@ describe("How to Win tests: ", function () {
     });
     describe("Check who_wins function with invalid signatures: ", function () {
       it("Check the example: -plaintiff N##V  -defendant NVV", function () {
-        assert.throws(() => {how_2_win("N##V", "NNV")}, Error, "Invalid Plaintiff Signatures:  N##V");
+        assert.throws(() => {how_2_win("N##V", "NVV")}, Error, "Invalid  Signatures: N##V - NVV");
       });
     });
   });
