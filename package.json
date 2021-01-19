@@ -4,6 +4,7 @@
   "description": "Test for Backend Developer role.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js -h",
     "test": "./node_modules/.bin/mocha --reporter spec ./test/**/*.js"
   },
   "repository": {
