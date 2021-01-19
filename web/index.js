@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 
+//Starts HTTP Server and configures Swagger
 function startServer(port){
    const expressSwagger = require('express-swagger-generator')(app);
    require('./routes')(app);

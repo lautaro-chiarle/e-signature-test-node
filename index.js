@@ -1,7 +1,12 @@
 #!/usr/bin/env node
+var {command_whowins, command_how2win} =  require('./cli');
+var {startServer} = require('./web')
+var yargs = require('yargs');
+
 var argv = require('yargs/yargs')(process.argv.slice(2))
     .usage('Usage: $0 <command> [options]')
-    //command line 
+    //COMMANDS CONFIGURATION
+
     //whowins
     .command('whowins', "Identify the winner party in the trial given parties's signatures",
     (yargs) => {
@@ -17,7 +22,8 @@ var argv = require('yargs/yargs')(process.argv.slice(2))
         .alias('h', 'help')
     }
     )
-    .example('$0 who-wins --plaintiff KN --defendant NNV ', 'Returns the winner: Plaintiff') 
+    .example('$0 whowins --plaintiff KN --defendant NNV ', 'Returns the winner: Plaintiff') 
+
     //how2win
     .command('how2win', "Identify the needed signature in order to win",
     (yargs) => {
@@ -34,6 +40,7 @@ var argv = require('yargs/yargs')(process.argv.slice(2))
     }
     )
     .example('$0 how2win --plaintiff N#V  --defendant NVV ', 'Returns the needed signature: N')         
+
     //http server
     .command('serve', "Serves the application via HTTP",    
     (yargs) => {
@@ -47,18 +54,14 @@ var argv = require('yargs/yargs')(process.argv.slice(2))
     }
     )
     .example('$0 serve -port 8080 ', 'Start listening to http connections on port 8080')    
+
     //Help
     .help('h')
     .alias('h', 'help')
     .epilog('copyright Lautaro Chiarle - 2021')
     .argv;
 
-
-var {command_whowins, command_how2win} =  require('./cli');
-var {startServer} = require('./web')
-var yargs = require('yargs');
-
-
+//Executes processes according to the read command
 if (argv._=="whowins"){
     command_whowins(argv.p, argv.d);
 }else if (argv._=="how2win"){

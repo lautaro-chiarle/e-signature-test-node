@@ -10,11 +10,6 @@ function isValidSignature(sign) {
   return isValid(sign, charSequence);
 }
 
-function isValidSignatureWithMissing(sign) {
-  let charSequence = Object.keys(registry).join("") + "#"; //TODO solo puede haber un #
-  return isValid(sign, charSequence);
-}
-
 function validateSignatures(p, d) {
   if (!isValidSignature(p)) {
     throw new Error("Invalid Plaintiff Signatures:  " + p);
@@ -36,8 +31,8 @@ function cleanKingSignature(signature) {
 }
 function calcSignatureValue(signature) {
   let value = 0;
-  let arr = signature.split("");
-  arr.forEach((sign) => (value += registry[sign]));
+  let arr = signature.split(""); //transforms the string into an array
+  arr.forEach((sign) => (value += registry[sign])); //adds the value of each signature
   return value;
 }
 

@@ -4,6 +4,7 @@ var {
   lookForMinSignature,
 } = require("./utils");
 
+// Who Wins main function
 function who_wins(plaintiff, defendant) {
   [plaintiff_value, defendant_value] = validateAndCalc(plaintiff, defendant);
 
@@ -16,8 +17,12 @@ function who_wins(plaintiff, defendant) {
   }
 }
 
+// How to Win main function
 function how_2_win(plaintiff, defendant) {
-  let missingCount =   ((plaintiff + defendant).match(/#/g) || []).length;
+
+  
+  let missingCount =   ((plaintiff + defendant).match(/#/g) || []).length;  //Counts the number of character # occurrences
+  
   if ( missingCount != 1) {
     throw new Error("Invalid  Signatures: " + plaintiff + " - " + defendant);
   }
@@ -25,13 +30,12 @@ function how_2_win(plaintiff, defendant) {
   let diff =0;
   if (hasMissingSignature(plaintiff)) {
     plaintiff = plaintiff.replace("#", "");
-    [plaintiff_value, defendant_value] = validateAndCalc(plaintiff, defendant);
-    diff = defendant_value - plaintiff_value;
   }else if (hasMissingSignature(defendant)) {
     defendant = defendant.replace("#", "");
-    [plaintiff_value, defendant_value] = validateAndCalc(plaintiff, defendant);
-    diff = plaintiff_value - defendant_value;
   }
+
+  [plaintiff_value, defendant_value] = validateAndCalc(plaintiff, defendant);
+  diff = Math.abs(plaintiff_value - defendant_value);
 
   
   return lookForMinSignature(diff);
