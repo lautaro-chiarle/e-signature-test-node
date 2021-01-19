@@ -82,7 +82,9 @@ Make a program that receives both contracts as input (for example N#V vs NVV ) a
 ### Modo CLI
 
 - Ejecutar el comando **whowins**. Ej:
+
 ```node index.js whowins --plaintiff KN --defendant NNV```
 
 - Ejecutar el comando **how2win**. Ej:
+
 ```node index.js how2win --plaintiff N#V --defendant NNV```
