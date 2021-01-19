@@ -17,7 +17,7 @@ var argv = require('yargs/yargs')(process.argv.slice(2))
         .alias('h', 'help')
     }
     )
-    .example('$0 who-wins -plaintiff KN -defendant NNV ', 'Returns the winner: Plaintiff') 
+    .example('$0 who-wins --plaintiff KN --defendant NNV ', 'Returns the winner: Plaintiff') 
     //how2win
     .command('how2win', "Identify the needed signature in order to win",
     (yargs) => {
@@ -33,7 +33,7 @@ var argv = require('yargs/yargs')(process.argv.slice(2))
         .alias('h', 'help')
     }
     )
-    .example('$0 how2win -plaintiff N#V  -defendant NVV ', 'Returns the needed signature: N')         
+    .example('$0 how2win --plaintiff N#V  --defendant NVV ', 'Returns the needed signature: N')         
     //http server
     .command('serve', "Serves the application via HTTP",    
     (yargs) => {
@@ -54,8 +54,8 @@ var argv = require('yargs/yargs')(process.argv.slice(2))
     .argv;
 
 
-var {command_whowins, command_how2win} =  require('./command-line');
-var startServer = require('./server')
+var {command_whowins, command_how2win} =  require('./cli');
+var {startServer} = require('./web')
 var yargs = require('yargs');
 
 

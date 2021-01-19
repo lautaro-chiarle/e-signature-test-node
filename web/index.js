@@ -1,9 +1,8 @@
-const routes = require('./routes');
 
+const express = require('express');
+const app = express();
 
 function startServer(port){
-   const express = require('express');
-   const app = express();
    const expressSwagger = require('express-swagger-generator')(app);
    require('./routes')(app);
    
@@ -27,8 +26,10 @@ function startServer(port){
    };
    expressSwagger(options)
 
-   app.listen(port);   
+   let server = app.listen(port);   
    console.log("Listening on port: "+port);
+   return server;
 }
 
-module.exports = startServer;
+exports.startServer = startServer;
+exports.app = app;

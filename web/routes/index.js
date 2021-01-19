@@ -14,6 +14,7 @@ function routes(app) {
   router.get("/who-wins/plaintiff/:plaintiff/defendant/:defendant", function (req, res) {
     try{
       let response = service_whowins(req.params.plaintiff, req.params.defendant);
+
       res.send(response);
     }catch(error){
       res.status(400).send(JSON.stringify(error.message));
