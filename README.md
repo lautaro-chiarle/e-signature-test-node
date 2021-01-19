@@ -69,13 +69,14 @@ Make a program that receives both contracts as input (for example N#V vs NVV ) a
 ### Modo Web
 
 -  Levantar el servidor:
+
 ```$ node index.js serve -p 8080```
 
 - Una vez levantada la aplicación ingresar a http://localhost:8080/api-docs
 
 - Desde el cliente Swagger se pueden ejecutar los endpoints:
     - [/who-wins/plaintiff/{plaintiff}/defendant/{defendant}](http://localhost:8080/api-docs#/Operations/get_who_wins_plaintiff__plaintiff__defendant__defendant_)
-    - [/how-2-win/plaintiff/{plaintiff}/defendant/{defendant}](http://localhost:8989/api-docs#/Operations/get_how_2_win_plaintiff__plaintiff__defendant__defendant_)
+    - [/how-2-win/plaintiff/{plaintiff}/defendant/{defendant}](http://localhost:8080/api-docs#/Operations/get_how_2_win_plaintiff__plaintiff__defendant__defendant_)
 
 
 ### Modo CLI
